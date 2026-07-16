@@ -171,7 +171,7 @@ nav .container{padding:0 16px}
 .hero h1{font-size:2rem}
 .hero-mockup{max-width:100%}
 }
-</style>
+.lightbox-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.92);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out}.lightbox-overlay.active{display:flex}.lightbox-overlay img{max-width:92vw;max-height:92vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5);animation:fadeInScale 0.3s ease}.lightbox-overlay .close{position:fixed;top:24px;right:32px;font-size:32px;color:rgba(255,255,255,0.6);cursor:pointer;transition:all 0.3s;background:none;border:none;line-height:1;z-index:10000}.lightbox-overlay .close:hover{color:#fff;transform:scale(1.2)}.lightbox-overlay .caption{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:14px;background:rgba(0,0,0,0.5);padding:8px 20px;border-radius:20px}</style>
 </head>
 <body><!-- NAV and HERO --><!-- test加的 -->
 <nav id="navbar"><div class="container">
@@ -377,4 +377,4 @@ entry.target.querySelectorAll(".skill-item-fill").forEach(f=>{f.style.width=f.da
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 function handleSubmit(e){e.preventDefault();const btn=e.target.querySelector("button");btn.textContent="✓ 已发送";btn.style.background="linear-gradient(135deg, #27c93f, #1a9e32)";setTimeout(()=>{btn.innerHTML="发送消息 →";btn.style.background="";e.target.reset()},3000)}
 document.querySelectorAll("a[href^=\"#\"]").forEach(a=>{a.addEventListener("click",e=>{e.preventDefault();const target=document.querySelector(a.getAttribute("href"));if(target)target.scrollIntoView({behavior:"smooth",block:"start"})})});
-</script></body></html>
+function openLightbox(img,c){var lb=document.getElementById('lightbox');document.getElementById('lightbox-img').src=img.src;document.getElementById('lightbox-caption').textContent=c||img.alt||'';lb.classList.add('active');document.body.style.overflow='hidden';}function closeLightbox(e){if(e.target===e.currentTarget||e.target.className==='close'){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='';}}document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.screenshot-gallery img').forEach(function(img){img.style.cursor='pointer';img.addEventListener('click',function(){openLightbox(this,this.getAttribute('title')||this.alt)});});});</script><div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)"><button class="close" onclick="closeLightbox(event)">&times;</button><img id="lightbox-img" src="" alt=""><div class="caption" id="lightbox-caption"></div></div></body></html>
